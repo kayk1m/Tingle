@@ -1,3 +1,7 @@
 // defines common styles (ex. container, screen, ...etc)
 
-export {};
+const commonStyles = {
+  bgTransparent: { backgroundColor: 'transparent' },
+};
+
+export default commonStyles;

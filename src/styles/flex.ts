@@ -1,9 +1,7 @@
-import { ViewStyle } from 'react-native';
-
 /**
  * @see https://reactnative.dev/docs/flexbox
  */
-const flex: { [key: string]: ViewStyle } = {
+const flex = {
   // flex-box; directions
   row: { flexDirection: 'row' },
   rowReverse: { flexDirection: 'row-reverse' },

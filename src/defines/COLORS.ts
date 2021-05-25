@@ -1,5 +1,35 @@
 // TODO: Needs to define primary colors or selection colors. Isn't it? 🤔
 
+const COLOR_KEYS = [
+  '50',
+  '100',
+  '200',
+  '300',
+  '400',
+  '500',
+  '600',
+  '700',
+  '800',
+  '900',
+] as const;
+
+export const COLOR_VARIANTS = [
+  'GRAY',
+  'RED',
+  'YELLOW',
+  'GREEN',
+  'BLUE',
+  'PURPLE',
+  'PINK',
+] as const;
+
+export type ColorKey = typeof COLOR_KEYS[number];
+export type ColorVariant = typeof COLOR_VARIANTS[number];
+
+/**
+ * Basic color palette from tailwindcss (except Indigo)
+ * @see https://tailwindcss.com/docs/customizing-colors
+ * */
 export const GRAY = {
   50: '#F9FAFB',
   100: '#F3F4F6',
