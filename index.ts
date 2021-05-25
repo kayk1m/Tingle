@@ -8,6 +8,7 @@ import { mainRoot } from './src/routes';
 
 // screens
 import Home from '@screens/Home';
+import COLORS from '@defines/COLORS';
 
 Navigation.registerComponent('Home', () => withNavigationProvider(Home));
 
@@ -19,7 +20,7 @@ Navigation.setDefaultOptions({
     visible: false,
   },
   bottomTabs: {
-    backgroundColor: 'whitesmoke',
+    backgroundColor: COLORS.GRAY[50],
   },
   bottomTab: {
     textColor: 'gray',
