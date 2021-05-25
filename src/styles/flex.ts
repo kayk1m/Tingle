@@ -42,6 +42,6 @@ const flex = {
   // flex-box; wrap
   wrap: { flexWrap: 'wrap' },
   nowrap: { flexWrap: 'nowrap' },
-};
+} as const;
 
 export default flex;

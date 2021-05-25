@@ -2,8 +2,6 @@
  * @description defines commonly used styles (ex. container, screen, ...etc)
  * */
 
-const commonStyles = {
-  bgTransparent: { backgroundColor: 'transparent' },
-};
+const commonStyles = {} as const;
 
 export default commonStyles;

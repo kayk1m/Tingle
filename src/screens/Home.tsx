@@ -1,53 +1,45 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
   Text,
   useColorScheme,
   View,
 } from 'react-native';
 
 import {
-  Colors,
   DebugInstructions,
   Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const Section: React.FC<{
-  title: string;
-}> = ({ children, title }) => {
+// styles
+import { bgColor, textColor } from '@styles/color';
+import layout from '@styles/layout';
+import { font, text } from '@styles/text';
+
+// types
+import { PropsWithChildren } from 'types';
+
+const Section = ({ children, title }: PropsWithChildren<{ title: string }>) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
+    <View style={[layout.mt(32), layout.px(24)]}>
       <Text
         style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
+          text['2xl'],
+          font.semibold,
+          isDarkMode ? textColor.white : textColor.black,
         ]}>
         {title}
       </Text>
       <Text
         style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
+          layout.mt(8),
+          text.lg,
+          isDarkMode ? textColor.GRAY[100] : textColor.GRAY[700],
         ]}>
         {children}
       </Text>
@@ -58,9 +50,7 @@ const Section: React.FC<{
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const backgroundStyle = isDarkMode ? bgColor.GRAY[800] : bgColor.GRAY[50];
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -69,13 +59,10 @@ const App = () => {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+        <View style={isDarkMode ? bgColor.black : bgColor.white}>
           <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
+            Edit <Text style={font.bold}>App.js</Text> to change this screen and
+            then come back to see your edits.
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
@@ -92,24 +79,5 @@ const App = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

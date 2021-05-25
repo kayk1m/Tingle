@@ -23,8 +23,16 @@ export const COLOR_VARIANTS = [
   'PINK',
 ] as const;
 
+export const NAMED_COLORS = [
+  'black',
+  'white',
+  'transparent',
+  'smokewhite',
+] as const;
+
 export type ColorKey = typeof COLOR_KEYS[number];
 export type ColorVariant = typeof COLOR_VARIANTS[number];
+export type NamedColor = typeof NAMED_COLORS[number];
 
 /**
  * Basic color palette from tailwindcss (except Indigo)

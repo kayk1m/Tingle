@@ -180,6 +180,6 @@ const layout = {
   objectFill: { resizeMode: 'stretch' },
   objectCenter: { resizeMode: 'center' },
   objectRepeat: { resizeMode: 'repaet' },
-};
+} as const;
 
 export default layout;
