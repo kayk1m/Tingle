@@ -25,6 +25,7 @@ import { PropsWithChildren } from 'types';
 
 const Section = ({ children, title }: PropsWithChildren<{ title: string }>) => {
   const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <View style={[layout.mt(32), layout.px(24)]}>
       <Text
