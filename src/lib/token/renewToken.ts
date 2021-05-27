@@ -1,24 +1,25 @@
 import { API_URL } from '@defines/index';
+import { fetcher } from '@lib/fetcher';
 import saveToken from './saveToken';
 
-const renewToken = async (accessToken: string, refreshToken: string) => {
-  const { accessToken: newAccessToken, error } = await fetch(
+// types
+import { Tokens } from 'types/auth';
+
+const renewToken: (
+  accessToken: string,
+  refreshToken: string,
+) => Promise<string> = async (accessToken, refreshToken) => {
+  const { accessToken: newAccessToken } = await fetcher<Tokens>(
     `${API_URL}/auth`,
     {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: accessToken,
       },
       body: JSON.stringify({ refreshToken }),
     },
-  ).then(res => res.json());
-
-  if (error) {
-    // TODO: handle error.
-    throw new Error(error.message);
-  }
+  );
 
   await saveToken(newAccessToken);
 

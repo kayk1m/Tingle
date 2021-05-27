@@ -1,13 +1,14 @@
 import React from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 import { NavigationFunctionComponent } from 'react-native-navigation';
+
+// styles
+import flex from '@styles/flex';
 
 const SigninScreen: NavigationFunctionComponent = () => {
   return (
-    <SafeAreaView>
-      <View>
-        <Text>hello world</Text>
-      </View>
+    <SafeAreaView style={[flex.flex1, flex.justifyCenter, flex.itemsCenter]}>
+      <Text>hello world</Text>
     </SafeAreaView>
   );
 };

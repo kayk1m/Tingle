@@ -1,6 +1,9 @@
 import { getSecureValue } from '@utils/keycahin';
 
-const getTokens = async () => {
+// types
+import { Tokens } from 'types/auth';
+
+const getTokens: () => Promise<Tokens> = async () => {
   const accessToken = await getSecureValue('@accessToken');
   const refreshToken = await getSecureValue('@refreshToken');
 

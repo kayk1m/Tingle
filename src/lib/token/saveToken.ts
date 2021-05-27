@@ -1,11 +1,12 @@
 import { setSecureValue } from '@utils/keycahin';
 
-const saveToken = async (accessToken: string, refreshToken?: string) => {
-  await setSecureValue('@accessToken', accessToken);
+const saveToken: (aceessToken: string, refreshToken?: string) => Promise<void> =
+  async (accessToken, refreshToken) => {
+    await setSecureValue('@accessToken', accessToken);
 
-  if (refreshToken) {
-    await setSecureValue('@refreshToken', refreshToken);
-  }
-};
+    if (refreshToken) {
+      await setSecureValue('@refreshToken', refreshToken);
+    }
+  };
 
 export default saveToken;
