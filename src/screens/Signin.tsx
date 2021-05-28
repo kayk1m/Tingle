@@ -9,15 +9,15 @@ import {
 } from 'react-native';
 import { NavigationFunctionComponent } from 'react-native-navigation';
 import { setRoot } from 'react-native-navigation-hooks';
-import { mainRoot } from '../routes';
+
+// routes
+import { mainRoot } from 'routes';
 
 // libraries
 import { signin, SigninProps } from '@lib/auth/signin';
 
 // styles
-import flex from '@styles/flex';
-import layout from '@styles/layout';
-import { text } from '@styles/text';
+import { flex, layout, text } from '@styles/index';
 
 const SigninScreen: NavigationFunctionComponent = () => {
   const [userInputs, setUserInputs] = useState<SigninProps>({

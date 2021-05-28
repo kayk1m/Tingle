@@ -2,8 +2,13 @@ import { getTokens, renewToken } from '@lib/token';
 
 export async function fetcher<T>(url: string, init?: RequestInit): Promise<T> {
   const response = await fetch(url, init);
+  const resJson = await response.json();
 
-  return await response.json();
+  if (!response.ok) {
+    throw resJson as ErrorJSON;
+  }
+
+  return resJson;
 }
 
 export async function fetcherWithToken<T>(

@@ -7,6 +7,11 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import { NavigationFunctionComponent } from 'react-native-navigation';
+import {
+  useNavigation,
+  useNavigationButtonPress,
+} from 'react-native-navigation-hooks';
 
 import {
   DebugInstructions,
@@ -16,12 +21,10 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 // styles
-import { bgColor, textColor } from '@styles/color';
-import layout from '@styles/layout';
-import { font, text } from '@styles/text';
+import { layout, font, text, bgColor, textColor } from '@styles/index';
 
 // types
-import { PropsWithChildren } from 'types';
+import { PropsWithChildren } from 'types/index';
 
 const Section = ({ children, title }: PropsWithChildren<{ title: string }>) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -48,7 +51,11 @@ const Section = ({ children, title }: PropsWithChildren<{ title: string }>) => {
   );
 };
 
-const App = () => {
+const App: NavigationFunctionComponent = () => {
+  const { push } = useNavigation();
+  useNavigationButtonPress(() => push('Profile'), {
+    buttonId: 'openProfileScreen',
+  });
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = isDarkMode ? bgColor.GRAY[800] : bgColor.GRAY[50];
@@ -79,6 +86,17 @@ const App = () => {
       </ScrollView>
     </SafeAreaView>
   );
+};
+
+App.options = {
+  topBar: {
+    rightButtons: [
+      {
+        id: 'openProfileScreen',
+        text: 'Profile',
+      },
+    ],
+  },
 };
 
 export default App;

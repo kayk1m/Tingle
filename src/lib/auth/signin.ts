@@ -34,6 +34,11 @@ export async function signin({ email, password }: SigninProps): Promise<void> {
     if (process.env.NODE_ENV === 'development') {
       console.log('[signin.ts]', err);
     }
+
+    if (err.code) {
+      throw new Error(err.message);
+    }
+
     throw new Error(`Signin failed. error: ${err.message}`);
   }
 }
