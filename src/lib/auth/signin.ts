@@ -3,7 +3,7 @@ import { fetcher } from '@lib/fetcher';
 import { saveToken } from '@lib/token';
 import { Tokens } from 'types/auth';
 
-interface SigninProps {
+export interface SigninProps {
   email: string;
   password: string;
 }

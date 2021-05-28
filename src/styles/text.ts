@@ -1,10 +1,10 @@
 const EM = 16 as const;
 
-/**
- * font-size
- * @see https://reactnative.dev/docs/text-style-props#fontsize
- */
 export const text = {
+  /**
+   * font-size
+   * @see https://reactnative.dev/docs/text-style-props#fontsize
+   */
   xs: { fontSize: 0.75 * EM, lineHeight: 1 * EM },
   sm: { fontSize: 0.875 * EM, lineHeight: 1.25 * EM },
   base: { fontSize: 1 * EM, lineHeight: 1.5 * EM },
@@ -13,6 +13,16 @@ export const text = {
   '2xl': { fontSize: 1.5 * EM, lineHeight: 2 * EM },
   '3xl': { fontSize: 1.875 * EM, lineHeight: 2.25 * EM },
   '4xl': { fontSize: 2.25 * EM, lineHeight: 2.5 * EM },
+
+  /**
+   * text-align
+   * @see https://reactnative.dev/docs/text-style-props#textalign
+   */
+  auto: { textAlign: 'auto' },
+  left: { textAlign: 'left' },
+  right: { textAlign: 'right' },
+  center: { textAlign: 'center' },
+  justify: { textAlign: 'justify' },
 } as const;
 
 /**

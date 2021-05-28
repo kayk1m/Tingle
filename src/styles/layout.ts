@@ -145,6 +145,9 @@ const layout = {
   left(val: LayoutValue) {
     return { left: val };
   },
+  inset(val: LayoutValue) {
+    return { top: val, right: val, bottom: val, left: val };
+  },
 
   /**
    * overflow

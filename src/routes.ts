@@ -12,10 +12,10 @@ export const mainRoot = {
   },
 };
 
-export const loginRoot = {
+export const signinRoot = {
   root: {
     component: {
-      name: 'Login',
+      name: 'Signin',
     },
   },
 };
