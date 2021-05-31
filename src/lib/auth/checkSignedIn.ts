@@ -1,8 +1,9 @@
-import { getTokens } from '@lib/token';
+import { getTokens, renewToken } from '@lib/token';
 
 export async function checkSignedIn(): Promise<boolean> {
   try {
-    await getTokens();
+    const { accessToken, refreshToken } = await getTokens();
+    await renewToken(accessToken, refreshToken);
 
     return true;
   } catch {
