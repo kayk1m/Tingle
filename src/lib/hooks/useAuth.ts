@@ -13,6 +13,7 @@ export default function useAuth(options: UseAuthOptions = { redirect: false }) {
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(newUser => {
+      // console.log('authStateChanged. newUser:', newUser?.email ?? null);
       setUser(newUser);
       if (newUser === null && options.redirect) {
         setRoot(signinRoot);
