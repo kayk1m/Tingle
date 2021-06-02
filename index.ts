@@ -12,6 +12,9 @@ import { mainRoot } from 'routes';
 import Home from '@screens/Home';
 import Signin from '@screens/Signin';
 import Profile from '@screens/Profile';
+import ChatList from '@screens/ChatList';
+import BoardList from '@screens/BoardList';
+import Menu from '@screens/Menu';
 
 // libraries
 // import { checkSignedIn } from '@lib/auth/checkSignedIn';
@@ -22,6 +25,13 @@ import COLORS from '@defines/COLORS';
 Navigation.registerComponent('Home', () => withNavigationProvider(Home));
 Navigation.registerComponent('Signin', () => withNavigationProvider(Signin));
 Navigation.registerComponent('Profile', () => withNavigationProvider(Profile));
+Navigation.registerComponent('ChatList', () =>
+  withNavigationProvider(ChatList),
+);
+Navigation.registerComponent('BoardList', () =>
+  withNavigationProvider(BoardList),
+);
+Navigation.registerComponent('Menu', () => withNavigationProvider(Menu));
 
 Navigation.setDefaultOptions({
   layout: {
