@@ -14,10 +14,10 @@ import { setRoot } from 'react-native-navigation-hooks';
 import { mainRoot } from 'routes';
 
 // libraries
-import { signin, SigninProps } from '@lib/auth/signin';
+import signin, { SigninProps } from '@lib/auth/signin';
 
 // styles
-import { flex, layout, text } from '@styles/index';
+import { bgColor, flex, layout, text, textColor } from '@styles/index';
 
 const SigninScreen: NavigationFunctionComponent = () => {
   const [userInputs, setUserInputs] = useState<SigninProps>({
@@ -41,8 +41,8 @@ const SigninScreen: NavigationFunctionComponent = () => {
 
   return (
     <SafeAreaView style={[flex.flex1, flex.justifyCenter]}>
-      <View style={[layout.px(48)]}>
-        <Text style={[text.center]}>Signin</Text>
+      <View style={[layout.px(48), bgColor.GRAY[100]]}>
+        <Text style={[text.center, textColor.RED[500]]}>Signin</Text>
         <TextInput
           style={[layout.mt(8)]}
           autoCapitalize="none"

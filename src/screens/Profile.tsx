@@ -1,61 +1,29 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { Button, SafeAreaView, Text, View } from 'react-native';
 import { NavigationFunctionComponent } from 'react-native-navigation';
 
 // libraries
-import { getTokens, renewToken } from '@lib/token';
-import { signout } from '@lib/auth/signout';
+import signout from '@lib/auth/signout';
+import useAuth from '@lib/hooks/useAuth';
 
 // styles
 import { flex, layout } from '@styles/index';
 
-// types
-import { Tokens } from 'types/auth';
-
 const ProfileScreen: NavigationFunctionComponent = () => {
-  const [tokens, setTokens] = useState<Tokens | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  const fetchData = useCallback(() => {
-    getTokens()
-      .then(tok => setTokens(tok))
-      .finally(() => setLoading(false));
-  }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  const renewAccessToken = useCallback(
-    async (accessToken: string, refreshToken: string) => {
-      setLoading(true);
-      await renewToken(accessToken, refreshToken);
-      fetchData();
-    },
-    [fetchData],
-  );
+  const { user, loading } = useAuth({ redirect: true });
 
   return (
     <SafeAreaView style={[flex.flex1, flex.justifyCenter]}>
       <View style={[layout.px(48)]}>
-        {tokens === null ? (
+        {loading || !user ? (
           <View>
             <Text>loading...</Text>
           </View>
         ) : (
           <View style={[flex.itemsCenter]}>
-            <Text>accessToken: {tokens.accessToken}</Text>
-            <Text style={[layout.mt(8)]}>
-              refreshToken: {tokens.refreshToken}
-            </Text>
+            <Text>email: {user.email}</Text>
+            <Text>uid: {user.uid}</Text>
             <Button title="signout" onPress={signout} />
-            <Button
-              title="refresh"
-              onPress={() => {
-                renewAccessToken(tokens.accessToken, tokens.refreshToken);
-              }}
-              disabled={loading}
-            />
           </View>
         )}
       </View>

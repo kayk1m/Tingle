@@ -20,6 +20,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+// hooks
+import useAuth from 'lib/hooks/useAuth';
+
 // styles
 import { layout, font, text, bgColor, textColor } from '@styles/index';
 
@@ -52,6 +55,7 @@ const Section = ({ children, title }: PropsWithChildren<{ title: string }>) => {
 };
 
 const App: NavigationFunctionComponent = () => {
+  useAuth({ redirect: true });
   const { push } = useNavigation();
   useNavigationButtonPress(() => push('Profile'), {
     buttonId: 'openProfileScreen',
