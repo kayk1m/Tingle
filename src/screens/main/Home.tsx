@@ -20,9 +20,6 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-// hooks
-import useAuth from 'lib/hooks/useAuth';
-
 // styles
 import { layout, font, text, bgColor, textColor } from '@styles/index';
 
@@ -55,7 +52,6 @@ const Section = ({ children, title }: PropsWithChildren<{ title: string }>) => {
 };
 
 const App: NavigationFunctionComponent = () => {
-  useAuth({ redirect: true });
   const { push } = useNavigation();
   useNavigationButtonPress(() => push('Profile'), {
     buttonId: 'openProfileScreen',
@@ -73,8 +69,8 @@ const App: NavigationFunctionComponent = () => {
         <Header />
         <View style={isDarkMode ? bgColor.black : bgColor.white}>
           <Section title="Step One">
-            Edit <Text style={font.bold}>App.js</Text> to change this screen and
-            then come back to see your edits.
+            Edit <Text style={[font.bold, textColor.PURPLE[600]]}>App.js</Text>{' '}
+            to change this screen and then come back to see your edits.
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />

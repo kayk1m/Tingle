@@ -12,16 +12,18 @@ export interface SigninProps {
 export default async function signin({
   email,
   password,
-}: SigninProps): Promise<void> {
+}: SigninProps): Promise<string> {
   try {
-    await auth().createUserWithEmailAndPassword(email, password);
+    return (await auth().createUserWithEmailAndPassword(email, password)).user
+      .uid;
   } catch (err) {
     switch (err.code) {
       case 'auth/invalid-email':
         throw new Error('이메일 주소가 올바르지 않습니다.');
       case 'auth/email-already-in-use': {
         try {
-          await auth().signInWithEmailAndPassword(email, password);
+          return (await auth().signInWithEmailAndPassword(email, password)).user
+            .uid;
         } catch (err2) {
           switch (err2.code) {
             case 'auth/user-disabled':
@@ -32,6 +34,8 @@ export default async function signin({
         }
       }
     }
+
+    throw new Error(err.message);
   }
 }
 

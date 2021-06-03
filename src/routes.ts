@@ -12,12 +12,12 @@ export const mainRoot: LayoutRoot = {
       children: [
         {
           stack: {
-            id: 'HOME_TAB',
+            id: 'FEED_TAB',
             children: [
               {
                 component: {
-                  id: 'HOME_SCREEN',
-                  name: 'Home',
+                  id: 'FEED_SCREEN',
+                  name: 'Feed',
                 },
               },
             ],
@@ -91,10 +91,20 @@ export const mainRoot: LayoutRoot = {
   },
 };
 
-export const signinRoot = {
+export const signinRoot: LayoutRoot = {
   root: {
     component: {
-      name: 'Signin',
+      id: 'PHONE_AUTH_SCREEN',
+      name: 'PhoneAuth',
+    },
+  },
+};
+
+export const registrationRoot: LayoutRoot = {
+  root: {
+    component: {
+      id: 'USER_DATA_REGISTRATION_SCREEN',
+      name: 'UserDataRegistration',
     },
   },
 };
