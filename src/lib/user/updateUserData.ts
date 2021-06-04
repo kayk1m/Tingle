@@ -9,5 +9,15 @@ export default async function updateUserData(data: Partial<UserDataInput>) {
     throw new Error('로그인이 필요합니다.');
   }
 
-  return await firestore().collection('user').doc(authUser.uid).update(data);
+  return await firestore()
+    .collection('user')
+    .doc(authUser.uid)
+    .update(
+      JSON.parse(
+        JSON.stringify({
+          ...data,
+          birthYear: data.birthYear ? Number(data.birthYear) : undefined,
+        }),
+      ),
+    );
 }

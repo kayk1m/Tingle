@@ -1,22 +1,14 @@
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+
+import getUserId from './getUserId';
 
 // types
 import { UserData } from 'types/user';
 
 export default async function getUserData(uid?: string): Promise<UserData> {
-  let userId = uid;
+  const userId = uid ?? getUserId();
 
-  if (!userId) {
-    const authUser = auth().currentUser;
-    if (!authUser) {
-      throw new Error('로그인이 필요합니다.');
-    }
-
-    userId = authUser.uid;
-  }
-
-  const user = await firestore().collection('user').doc(uid).get();
+  const user = await firestore().collection('user').doc(userId).get();
 
   if (!user.exists) {
     throw new Error('로그인이 필요합니다.');
