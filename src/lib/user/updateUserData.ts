@@ -17,6 +17,7 @@ export default async function updateUserData(data: Partial<UserDataInput>) {
         JSON.stringify({
           ...data,
           birthYear: data.birthYear ? Number(data.birthYear) : undefined,
+          lastUpdated: new Date(),
         }),
       ),
     );

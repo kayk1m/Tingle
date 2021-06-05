@@ -5,24 +5,30 @@ export interface UserData {
   displayName: string;
   phoneNum: string;
   gender: Gender | null;
-  birthYear: number;
+  birthYear: number | null;
   profileUrl: string | null;
   statusText: string;
   created: Date;
   lastUpdated: Date | null;
 }
 
-export interface UserDataInput
-  extends Omit<UserData, 'phoneNum' | 'birthYear' | 'created' | 'lastUpdated'> {
-  birthYear: string;
-}
+export type UserDataInput = Omit<
+  UserData,
+  'phoneNum' | 'created' | 'lastUpdated'
+>;
 
 export const initialUserDataInput: UserDataInput = {
   displayName: '',
   gender: null,
-  birthYear: '',
+  birthYear: null,
   profileUrl: null,
   statusText: '',
+};
+
+export type RegisteredUserData = UserData & {
+  gender: Gender;
+  birthYear: number;
+  lastUpdated: Date;
 };
 
 export {};
