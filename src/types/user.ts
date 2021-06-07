@@ -1,3 +1,5 @@
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+
 export const GENDER_VARIANTS = ['male', 'female', 'other'] as const;
 export type Gender = typeof GENDER_VARIANTS[number];
 
@@ -8,8 +10,8 @@ export interface UserData {
   birthYear: number | null;
   profileUrl: string | null;
   statusText: string;
-  created: Date;
-  lastUpdated: Date | null;
+  created: FirebaseFirestoreTypes.Timestamp;
+  lastUpdated: FirebaseFirestoreTypes.Timestamp | null;
 }
 
 export type UserDataInput = Omit<
@@ -28,7 +30,7 @@ export const initialUserDataInput: UserDataInput = {
 export type RegisteredUserData = UserData & {
   gender: Gender;
   birthYear: number;
-  lastUpdated: Date;
+  lastUpdated: FirebaseFirestoreTypes.Timestamp;
 };
 
 export {};

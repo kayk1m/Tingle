@@ -1,3 +1,5 @@
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+
 export const NAMED_AREAS = ['서울', '부산', '제주'] as const;
 export type NamedArea = typeof NAMED_AREAS[number];
 
@@ -46,9 +48,9 @@ export interface Travel {
   arrival: {
     area: TingleStringArea;
   };
-  created: Date;
-  lastUpdated: Date | null;
-  deleted: Date | null;
+  created: FirebaseFirestoreTypes.Timestamp;
+  lastUpdated: FirebaseFirestoreTypes.Timestamp | null;
+  deleted: FirebaseFirestoreTypes.Timestamp | null;
 }
 
 export {};
