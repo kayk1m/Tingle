@@ -60,3 +60,7 @@ buck-out/
 
 # Template
 Template.*
+
+# Google Services
+google-services.json
+GoogleService-Info.plist
