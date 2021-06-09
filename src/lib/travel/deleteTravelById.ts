@@ -1,6 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 
-import getAuthUser from 'lib/user/getAuthUser';
+import getAuthUser from '@lib/user/getAuthUser';
 
 export default async function deleteTravelById(travelId: string) {
   getAuthUser();

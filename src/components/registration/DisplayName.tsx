@@ -34,7 +34,7 @@ export default function DisplayName({ next, mutate }: Props) {
         placeholder="홍길동"
         maxLength={10}
         value={name}
-        onChangeText={val => setName(val)}
+        onChangeText={(val) => setName(val)}
       />
       <Button
         title="다음"

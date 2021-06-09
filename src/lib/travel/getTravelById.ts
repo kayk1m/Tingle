@@ -2,7 +2,8 @@ import firestore, {
   // types
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
-import getAuthUser from 'lib/user/getAuthUser';
+
+import getAuthUser from '@lib/user/getAuthUser';
 
 // types
 import { Travel } from 'types/travel';

@@ -2,7 +2,8 @@ import firestore, {
   // types
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
-import getDateString from 'lib/time/getDateString';
+
+import getDateString from '@lib/time/getDateString';
 
 // types
 import { Travel } from 'types/travel';

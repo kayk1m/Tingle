@@ -16,13 +16,15 @@ export interface UserData {
 
 export type UserDataInput = Omit<
   UserData,
-  'phoneNum' | 'created' | 'lastUpdated'
->;
+  'phoneNum' | 'birthYear' | 'created' | 'lastUpdated'
+> & {
+  birthYear: string;
+};
 
 export const initialUserDataInput: UserDataInput = {
   displayName: '',
   gender: null,
-  birthYear: null,
+  birthYear: '',
   profileUrl: null,
   statusText: '',
 };

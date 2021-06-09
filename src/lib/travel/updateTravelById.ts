@@ -1,8 +1,8 @@
 import firestore from '@react-native-firebase/firestore';
 
-import getAuthUser from 'lib/user/getAuthUser';
+import getAuthUser from '@lib/user/getAuthUser';
+
 // types
-import { Travel } from 'types/travel';
 import { TravelInput } from './createTravel';
 
 export default async function updateTravelById(
@@ -41,5 +41,5 @@ export default async function updateTravelById(
         },
       },
       lastUpdated: new Date(),
-    } as Travel);
+    });
 }

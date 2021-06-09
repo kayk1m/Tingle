@@ -2,7 +2,8 @@ import firestore, {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
 
-import getAuthUser from 'lib/user/getAuthUser';
+import getAuthUser from '@lib/user/getAuthUser';
+
 // types
 import { NamedArea, Publicity, TingleDate, Travel } from 'types/travel';
 
@@ -63,5 +64,5 @@ export default async function createTravel({
       created: new Date(),
       lastUpdated: null,
       deleted: null,
-    } as Travel)) as unknown as FirebaseFirestoreTypes.DocumentReference<Travel>;
+    })) as unknown as FirebaseFirestoreTypes.DocumentReference<Travel>;
 }

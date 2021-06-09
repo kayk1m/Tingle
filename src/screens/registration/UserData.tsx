@@ -5,7 +5,7 @@ import { NavigationFunctionComponent } from 'react-native-navigation';
 import auth from '@react-native-firebase/auth';
 import { setRoot } from 'react-native-navigation-hooks/dist';
 
-import { mainRoot, signinRoot } from 'routes';
+import { mainRoot, signinRoot } from '../../routes';
 
 import { BirthYear, DisplayName, Gender } from '@components/registration';
 
@@ -49,11 +49,11 @@ const UserDataRegistrationScreen: NavigationFunctionComponent = () => {
   useEffect(() => {
     if (authUser) {
       getUserData(authUser.uid)
-        .then(userData => {
+        .then((userData) => {
           setUserData(userData);
           setCurStep(calcStep(userData));
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
         })
         .finally(() => {
@@ -92,7 +92,7 @@ const UserDataRegistrationScreen: NavigationFunctionComponent = () => {
                 return (
                   <DisplayName
                     next={() => setCurStep(STEPS.birthYear)}
-                    mutate={newName => {
+                    mutate={(newName) => {
                       setUserData({
                         ...userData,
                         displayName: newName,
@@ -104,7 +104,7 @@ const UserDataRegistrationScreen: NavigationFunctionComponent = () => {
                 return (
                   <BirthYear
                     next={() => setCurStep(STEPS.gender)}
-                    mutate={birthYear => {
+                    mutate={(birthYear) => {
                       setUserData({
                         ...userData,
                         birthYear,
@@ -116,7 +116,7 @@ const UserDataRegistrationScreen: NavigationFunctionComponent = () => {
                 return (
                   <Gender
                     next={() => setRoot(mainRoot)}
-                    mutate={gender => {
+                    mutate={(gender) => {
                       setUserData({
                         ...userData,
                         gender,

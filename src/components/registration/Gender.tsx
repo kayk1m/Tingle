@@ -3,13 +3,13 @@ import { Alert, View } from 'react-native';
 import { Button } from 'react-native-elements';
 
 import updateUserData from '@lib/user/updateUserData';
+import saveUserData from '@lib/user/saveUserData';
 
 // styles
 import { bgColor, flex, textColor } from '@styles/index';
 
 // types
-import { Gender } from 'types/user';
-import { GENDER_VARIANTS } from '../../types/user';
+import { Gender, GENDER_VARIANTS } from 'types/user';
 
 const GENDER_DISPLAY = {
   male: '남성',
@@ -33,6 +33,8 @@ export default function GenderSelect({ next, mutate }: Props) {
           await mutate(gender);
         }
 
+        await saveUserData();
+
         next();
       } catch (err) {
         Alert.alert(err.message);
@@ -44,7 +46,7 @@ export default function GenderSelect({ next, mutate }: Props) {
   return (
     <View>
       <View style={[flex.row]}>
-        {GENDER_VARIANTS.map(val => (
+        {GENDER_VARIANTS.map((val) => (
           <View key={val} style={[flex.flex1]}>
             <Button
               type="outline"

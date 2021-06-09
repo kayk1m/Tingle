@@ -19,20 +19,20 @@ function mapColors<T extends TextStyle | ViewStyle>(
 }
 
 export const textColor = Object.fromEntries([
-  ...COLOR_VARIANTS.map(variant => [
+  ...COLOR_VARIANTS.map((variant) => [
     variant,
-    mapColors<TextStyle>(variant, val => ({ color: val })),
+    mapColors<TextStyle>(variant, (val) => ({ color: val })),
   ]),
-  NAMED_COLORS.map(color => [color, { color }]),
+  NAMED_COLORS.map((color) => [color, { color }]),
 ]) as { [Key in ColorVariant]: { [Key in ColorKey]: { color: ColorValue } } } &
   { [Key in NamedColor]: { color: ColorValue } };
 
 export const bgColor = Object.fromEntries([
-  ...COLOR_VARIANTS.map(variant => [
+  ...COLOR_VARIANTS.map((variant) => [
     variant,
-    mapColors<ViewStyle>(variant, val => ({ backgroundColor: val })),
+    mapColors<ViewStyle>(variant, (val) => ({ backgroundColor: val })),
   ]),
-  NAMED_COLORS.map(color => [color, { backgroundColor: color }]),
+  NAMED_COLORS.map((color) => [color, { backgroundColor: color }]),
 ]) as {
   [Key in ColorVariant]: {
     [Key in ColorKey]: { backgroundColor: ColorValue };
@@ -41,11 +41,11 @@ export const bgColor = Object.fromEntries([
   { [Key in NamedColor]: { backgroundColor: ColorValue } };
 
 export const borderColor = Object.fromEntries([
-  ...COLOR_VARIANTS.map(variant => [
+  ...COLOR_VARIANTS.map((variant) => [
     variant,
-    mapColors<ViewStyle>(variant, val => ({ borderColor: val })),
+    mapColors<ViewStyle>(variant, (val) => ({ borderColor: val })),
   ]),
-  NAMED_COLORS.map(color => [color, { borderColor: color }]),
+  NAMED_COLORS.map((color) => [color, { borderColor: color }]),
 ]) as {
   [Key in ColorVariant]: { [Key in ColorKey]: { borderColor: ColorValue } };
 } &

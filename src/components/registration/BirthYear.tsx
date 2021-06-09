@@ -34,7 +34,7 @@ export default function BirthYear({ next, mutate }: Props) {
         placeholder="YYYY"
         maxLength={4}
         value={birthYear ? String(birthYear) : ''}
-        onChangeText={val => {
+        onChangeText={(val) => {
           // TODO: type check!!! (number)
           try {
             if (birthYear) {

@@ -6,15 +6,15 @@ import { setRoot } from 'react-native-navigation-hooks';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 // routes
-import { mainRoot, registrationRoot } from 'routes';
+import { mainRoot, registrationRoot } from '../../routes';
 
 // libraries
 import getUserData from '@lib/user/getUserData';
+import createUserData from '@lib/user/createUserData';
+import checkUserData from '@lib/user/checkUserData';
 
 // styles
 import { bgColor, flex, layout } from '@styles/index';
-import createUserData from 'lib/user/createUserData';
-import checkUserData from 'lib/user/checkUserData';
 
 const PhoneAuthScreen: NavigationFunctionComponent = () => {
   const [phoneNum, setPhoneNum] = useState('');
@@ -81,7 +81,7 @@ const PhoneAuthScreen: NavigationFunctionComponent = () => {
           <Input
             placeholder="휴대전화번호"
             value={phoneNum}
-            onChangeText={val => setPhoneNum(val)}
+            onChangeText={(val) => setPhoneNum(val)}
           />
           <Button
             title="인증코드 전송"
@@ -94,7 +94,7 @@ const PhoneAuthScreen: NavigationFunctionComponent = () => {
           <Input
             placeholder="인증코드"
             value={confirmCode}
-            onChangeText={val => setConfirmCode(val)}
+            onChangeText={(val) => setConfirmCode(val)}
           />
           <Button
             title="인증코드 전송"

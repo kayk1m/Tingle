@@ -22,10 +22,6 @@ import { UserDataRegistrationScreen } from '@screens/registration';
 import { PhoneAuthScreen } from '@screens/signin';
 
 // libraries
-/**
- * @deprecated
- */
-// import { checkSignedIn } from '@lib/auth/checkSignedIn';
 import checkUserData from '@lib/user/checkUserData';
 
 // definitions

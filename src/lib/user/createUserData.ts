@@ -20,5 +20,7 @@ export default async function createUserData(
 
   await firestore().collection('user').doc(authUser.uid).set(newUserData);
 
-  return newUserData;
+  return (
+    await firestore().collection('user').doc(authUser.uid).get()
+  ).data() as UserData;
 }

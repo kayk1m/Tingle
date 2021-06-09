@@ -6,7 +6,7 @@ export default function useAuth() {
   const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
 
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(newUser => {
+    const subscriber = auth().onAuthStateChanged((newUser) => {
       // console.log('authStateChanged. newUser:', newUser?.email ?? null);
       setUser(newUser);
       if (loading) {
