@@ -6,7 +6,7 @@ import firestore, {
 import getDateString from '@lib/time/getDateString';
 
 // types
-import { Travel } from 'types/travel';
+import { Travel } from '~/types/travel';
 
 export default async function getUpcomingTravels() {
   const today = new Date();

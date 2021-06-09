@@ -1,10 +1,10 @@
 import React from 'react';
 import { SafeAreaView, Text, View } from 'react-native';
+import { Avatar, Button } from 'react-native-elements';
 import { NavigationFunctionComponent } from 'react-native-navigation';
 
 // styles
 import { bgColor, flex, font, layout, text, textColor } from '@styles/index';
-import { Avatar, Button } from 'react-native-elements';
 
 const FeedScreen: NavigationFunctionComponent = () => {
   return (

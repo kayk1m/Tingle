@@ -5,7 +5,7 @@ import getAuthUser from './getAuthUser';
 import createUserData from './createUserData';
 
 // types
-import { UserData } from 'types/user';
+import { UserData } from '~/types/user';
 
 export default async function getUserData(uid?: string): Promise<UserData> {
   const userId = uid ?? getAuthUser().uid;

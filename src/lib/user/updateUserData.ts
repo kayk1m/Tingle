@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-import { UserDataInput } from 'types/user';
+import { UserDataInput } from '~/types/user';
 
 export default async function updateUserData(data: Partial<UserDataInput>) {
   const authUser = auth().currentUser;

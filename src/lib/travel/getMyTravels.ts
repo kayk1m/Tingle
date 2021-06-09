@@ -6,7 +6,7 @@ import firestore, {
 import getAuthUser from '@lib/user/getAuthUser';
 
 // types
-import { Travel } from 'types/travel';
+import { Travel } from '~/types/travel';
 
 export default async function getMyTravels() {
   const uid = getAuthUser().uid;

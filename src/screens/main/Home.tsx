@@ -24,7 +24,7 @@ import {
 import { layout, font, text, bgColor, textColor } from '@styles/index';
 
 // types
-import { PropsWithChildren } from 'types/index';
+import { PropsWithChildren } from '~/types/index';
 
 const Section = ({ children, title }: PropsWithChildren<{ title: string }>) => {
   const isDarkMode = useColorScheme() === 'dark';

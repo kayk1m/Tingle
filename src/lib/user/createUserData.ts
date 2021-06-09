@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-import { initialUserDataInput, UserData } from 'types/user';
+import { initialUserDataInput, UserData } from '~/types/user';
 
 export default async function createUserData(
   phoneNum: string,

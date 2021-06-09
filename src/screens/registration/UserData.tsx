@@ -17,7 +17,7 @@ import getUserData from '@lib/user/getUserData';
 import { flex, layout, text } from '@styles/index';
 
 // types
-import { UserData } from 'types/user';
+import { UserData } from '~/types/user';
 
 const STEPS = {
   displayName: 0,

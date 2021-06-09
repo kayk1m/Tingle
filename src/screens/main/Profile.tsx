@@ -10,7 +10,7 @@ import useAuth from '@lib/hooks/useAuth';
 import { flex, layout } from '@styles/index';
 
 const ProfileScreen: NavigationFunctionComponent = () => {
-  const { user, loading } = useAuth({ redirect: true });
+  const { user, loading } = useAuth();
 
   return (
     <SafeAreaView style={[flex.flex1, flex.justifyCenter]}>

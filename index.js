@@ -7,7 +7,7 @@ import { setRoot, withNavigationProvider } from 'react-native-navigation-hooks';
 import auth from '@react-native-firebase/auth';
 
 // routes
-import { mainRoot, registrationRoot, signinRoot } from 'routes';
+import { mainRoot, registrationRoot, signinRoot } from '~/routes';
 
 // screens
 import {

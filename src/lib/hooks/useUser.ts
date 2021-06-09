@@ -5,7 +5,7 @@ import { setRoot } from 'react-native-navigation-hooks/dist';
 import { registrationRoot } from '../../routes';
 import getUserData from '@lib/user/getUserData';
 
-import { UserData } from 'types/user';
+import { UserData } from '~/types/user';
 
 export interface User extends FirebaseAuthTypes.User {
   displayName: string;

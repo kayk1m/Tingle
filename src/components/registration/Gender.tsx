@@ -9,7 +9,7 @@ import saveUserData from '@lib/user/saveUserData';
 import { bgColor, flex, textColor } from '@styles/index';
 
 // types
-import { Gender, GENDER_VARIANTS } from 'types/user';
+import { Gender, GENDER_VARIANTS } from '~/types/user';
 
 const GENDER_DISPLAY = {
   male: '남성',

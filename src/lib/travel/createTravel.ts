@@ -5,7 +5,7 @@ import firestore, {
 import getAuthUser from '@lib/user/getAuthUser';
 
 // types
-import { NamedArea, Publicity, TingleDate, Travel } from 'types/travel';
+import { NamedArea, Publicity, TingleDate, Travel } from '~/types/travel';
 
 export interface TravelInput {
   title: string;

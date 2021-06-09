@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
 // types
-import { UserData } from 'types/user';
+import { UserData } from '~/types/user';
 import getUserData from './getUserData';
 
 export default async function saveUserData(data?: UserData) {
