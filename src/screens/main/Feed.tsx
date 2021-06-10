@@ -3,10 +3,14 @@ import { SafeAreaView, Text, View } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
 import { NavigationFunctionComponent } from 'react-native-navigation';
 
+import useUser from '@lib/hooks/useUser';
+
 // styles
 import { bgColor, flex, font, layout, text, textColor } from '@styles/index';
 
 const FeedScreen: NavigationFunctionComponent = () => {
+  const { user } = useUser();
+
   return (
     <SafeAreaView style={[flex.flex1]}>
       <View
@@ -28,7 +32,8 @@ const FeedScreen: NavigationFunctionComponent = () => {
           <Avatar
             size="large"
             rounded
-            title="K"
+            title={user?.displayName[0]}
+            source={{ uri: user?.profileUrl ?? undefined }}
             containerStyle={[bgColor.GRAY[300]]}
           />
           <Button

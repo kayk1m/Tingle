@@ -6,6 +6,7 @@ import { NavigationFunctionComponent } from 'react-native-navigation';
 import LoadingScreen from '@components/core/Loading';
 
 import useUser from '@lib/hooks/useUser';
+import editProfilePhoto from '@lib/storage/editProfilePhoto';
 
 // styles
 import {
@@ -17,7 +18,9 @@ import {
   textColor,
   borderColor,
 } from '@styles/index';
+
 import { GENDER } from '~/helper';
+import signout from '~/lib/auth/signout';
 
 const menuList = [
   {
@@ -35,7 +38,7 @@ const menuList = [
 ] as const;
 
 const MenuScreen: NavigationFunctionComponent = () => {
-  const { user } = useUser();
+  const { user, refresh } = useUser();
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
@@ -56,14 +59,27 @@ const MenuScreen: NavigationFunctionComponent = () => {
           <Avatar
             size="large"
             title={user.displayName[0]}
+            source={{ uri: user.profileUrl ?? undefined }}
             rounded
             containerStyle={[
               bgColor.GRAY[100],
               layout.border(1),
               borderColor.GRAY[200],
             ]}
-            titleStyle={[textColor.GRAY[500]]}
-          />
+            titleStyle={[textColor.GRAY[500]]}>
+            <Avatar.Accessory
+              size={20}
+              onPress={() => {
+                editProfilePhoto({
+                  onStart: () => console.log('start'),
+                  onEnd: () => {
+                    console.log('end');
+                    // refresh();
+                  },
+                });
+              }}
+            />
+          </Avatar>
         </View>
         <Text style={[text.center, layout.mt(8), textColor.GRAY[700], text.lg]}>
           {user.displayName}
@@ -87,6 +103,15 @@ const MenuScreen: NavigationFunctionComponent = () => {
             <ListItem.Chevron />
           </ListItem>
         ))}
+        <ListItem
+          bottomDivider
+          onPress={() => {
+            signout();
+          }}>
+          <ListItem.Content>
+            <ListItem.Title>로그아웃</ListItem.Title>
+          </ListItem.Content>
+        </ListItem>
       </ScrollView>
     </SafeAreaView>
   );
