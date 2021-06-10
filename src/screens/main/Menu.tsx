@@ -38,7 +38,7 @@ const menuList = [
 ] as const;
 
 const MenuScreen: NavigationFunctionComponent = () => {
-  const { user, refresh } = useUser();
+  const { user } = useUser();
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 

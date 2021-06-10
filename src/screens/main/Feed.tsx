@@ -1,15 +1,46 @@
-import React from 'react';
-import { SafeAreaView, Text, View } from 'react-native';
-import { Avatar, Button } from 'react-native-elements';
+import React, { useCallback, useEffect, useState } from 'react';
+import {
+  ActivityIndicator,
+  Alert,
+  FlatList,
+  SafeAreaView,
+  Text,
+  View,
+} from 'react-native';
+import { Avatar, Button, ListItem } from 'react-native-elements';
 import { NavigationFunctionComponent } from 'react-native-navigation';
 
 import useUser from '@lib/hooks/useUser';
+import getUpcomingTravels from '@lib/travel/getUpcomingTravels';
 
 // styles
 import { bgColor, flex, font, layout, text, textColor } from '@styles/index';
 
+import { Travel } from '~/types/travel';
+import { WithId } from '~/types';
+
 const FeedScreen: NavigationFunctionComponent = () => {
+  const [feedTravels, setFeedTravels] = useState<WithId<Travel>[] | null>(null);
+  const [loading, setLoading] = useState(true);
   const { user } = useUser();
+
+  const fetchData = useCallback(() => {
+    setLoading(true);
+    getUpcomingTravels()
+      .then((snapshot) =>
+        setFeedTravels(
+          snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })),
+        ),
+      )
+      .catch((err) => {
+        Alert.alert(err.message);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <SafeAreaView style={[flex.flex1]}>
@@ -44,7 +75,33 @@ const FeedScreen: NavigationFunctionComponent = () => {
           />
         </View>
       </View>
-      <Text style={text['2xl']}>FeedScreen</Text>
+      {!feedTravels ? (
+        <View style={[flex.flex1, flex.justifyCenter, flex.itemsCenter]}>
+          <ActivityIndicator />
+        </View>
+      ) : (
+        <FlatList
+          style={[flex.flex1]}
+          keyExtractor={(item) => item.id}
+          data={feedTravels}
+          renderItem={({ item: { title, departure, arrival, caption } }) => (
+            <ListItem>
+              <ListItem.Content>
+                <ListItem.Title>{title}</ListItem.Title>
+                <View>
+                  <Text>날짜: {departure.date.dateString}</Text>
+                  <Text>출발: {departure.area.value}</Text>
+                  <Text>도착: {arrival.area.value}</Text>
+                  <Text>{caption}</Text>
+                  {/* TODO: firestore reference user check */}
+                </View>
+              </ListItem.Content>
+            </ListItem>
+          )}
+          onRefresh={fetchData}
+          refreshing={loading}
+        />
+      )}
     </SafeAreaView>
   );
 };
