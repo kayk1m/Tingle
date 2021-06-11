@@ -14,6 +14,7 @@ export default async function getMyTravels() {
 
   return (await firestore()
     .collection('travel')
+    .where('deleted', '==', null)
     .where('owner', '==', owner)
     .orderBy('departure.date.dateString', 'desc')
     .orderBy('created', 'desc')

@@ -1,4 +1,5 @@
 import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+import { UserData } from './user';
 
 export const NAMED_AREAS = ['서울', '부산', '제주'] as const;
 export type NamedArea = typeof NAMED_AREAS[number];
@@ -36,7 +37,7 @@ export type TingleDate = {
 );
 
 export interface Travel {
-  ownerId: string;
+  owner: FirebaseFirestoreTypes.DocumentReference<UserData>;
   title: string;
   caption: string;
   publicity: Publicity;

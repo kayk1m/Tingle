@@ -13,6 +13,7 @@ export default async function getUpcomingTravels() {
 
   return (await firestore()
     .collection('travel')
+    .where('deleted', '==', null)
     .where('publicity', '==', 'public')
     .where('departure.date.dateString', '>=', getDateString(today))
     .orderBy('departure.date.dateString', 'desc')

@@ -16,5 +16,9 @@ export default async function getTravelById(travelId: string) {
     throw new Error('해당 여행을 찾을 수 없습니다.');
   }
 
-  return travel as unknown as FirebaseFirestoreTypes.DocumentSnapshot<Travel>;
+  if (travel.data()?.deleted) {
+    throw new Error('삭제된 여행입니다.');
+  }
+
+  return travel as FirebaseFirestoreTypes.DocumentSnapshot<Travel>;
 }
