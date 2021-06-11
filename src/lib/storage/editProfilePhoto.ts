@@ -3,6 +3,7 @@ import { launchImageLibrary } from 'react-native-image-picker';
 
 import getAuthUser from '@lib/user/getAuthUser';
 import updateUserData from '@lib/user/updateUserData';
+import saveUserData from '../user/saveUserData';
 
 interface EditProfilePhotoOptions {
   onStart?: () => void;
@@ -48,7 +49,9 @@ export default async function editProfilePhoto(
                 options?.onEnd();
               }
 
-              console.log('UserData successfully updated.');
+              saveUserData().then(() => {
+                console.log('UserData successfully updated.');
+              });
             });
           });
         });

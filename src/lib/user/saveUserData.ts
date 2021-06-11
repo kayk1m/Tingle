@@ -10,7 +10,7 @@ export default async function saveUserData(data?: UserData) {
     throw new Error('로그인이 필요합니다.');
   }
 
-  const userData = data ?? (await getUserData(authUser.uid));
+  const userData = data ?? (await getUserData(authUser.uid, { force: true }));
 
   await AsyncStorage.setItem(`@uid-${authUser.uid}`, JSON.stringify(userData));
 }

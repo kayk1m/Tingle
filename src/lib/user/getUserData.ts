@@ -7,14 +7,22 @@ import createUserData from './createUserData';
 // types
 import { UserData } from '~/types/user';
 
-export default async function getUserData(uid?: string): Promise<UserData> {
+interface GetUserDataOptions {
+  force?: boolean;
+}
+
+export default async function getUserData(
+  uid?: string,
+  options?: GetUserDataOptions,
+): Promise<UserData> {
   const userId = uid ?? getAuthUser().uid;
 
-  const dataString = await AsyncStorage.getItem(`@uid-${userId}`);
-
-  if (dataString !== null) {
-    // TODO: validation
-    return JSON.parse(dataString);
+  if (!options?.force) {
+    const dataString = await AsyncStorage.getItem(`@uid-${userId}`);
+    if (dataString !== null) {
+      // TODO: validation
+      return JSON.parse(dataString);
+    }
   }
 
   const user = await firestore().collection('user').doc(userId).get();
