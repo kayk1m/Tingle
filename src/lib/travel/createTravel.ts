@@ -37,14 +37,17 @@ export default async function createTravel({
   departureDate,
   arrivalArea,
 }: TravelInput) {
-  const uid = getAuthUser().uid;
+  const { uid } = getAuthUser();
+  const owner = firestore().collection('user').doc(uid);
+
+  console.log(owner);
 
   // TODO: do the validation 🤔🤔
 
   return (await firestore()
     .collection('travel')
     .add({
-      ownerId: uid,
+      owner,
       title,
       caption,
       publicity,

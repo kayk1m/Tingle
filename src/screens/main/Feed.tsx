@@ -85,7 +85,7 @@ const FeedScreen: NavigationFunctionComponent = () => {
           keyExtractor={(item) => item.id}
           data={feedTravels}
           renderItem={({ item: { title, departure, arrival, caption } }) => (
-            <ListItem>
+            <ListItem bottomDivider>
               <ListItem.Content>
                 <ListItem.Title>{title}</ListItem.Title>
                 <View>

@@ -9,11 +9,12 @@ import getAuthUser from '@lib/user/getAuthUser';
 import { Travel } from '~/types/travel';
 
 export default async function getMyTravels() {
-  const uid = getAuthUser().uid;
+  const { uid } = getAuthUser();
+  const owner = firestore().collection('user').doc(uid);
 
   return (await firestore()
     .collection('travel')
-    .where('ownerId', '==', uid)
+    .where('owner', '==', owner)
     .orderBy('departure.date.dateString', 'desc')
     .orderBy('created', 'desc')
     .limit(20)
